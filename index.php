@@ -6,30 +6,20 @@
 <body>
 
 <form method="post">
- Enter Purchase Amount: <input type="text" name="amount" value="<?php if(isset($_POST['amount'])) echo htmlspecialchars($_POST['amount']); ?>">
- <input type="submit" value="Calculate Discount">
+ Username: <input type="text" name="username" value="<?php if(isset($_POST['username'])) echo htmlspecialchars($_POST['username']); ?>"><br>
+ Password: <input type="password" name="password" value="<?php if(isset($_POST['password'])) echo htmlspecialchars($_POST['password']); ?>"><br>
+ <input type="submit" value="Login">
 </form>
 
 <?php
-if (isset($_POST['amount'])) {
-    $amount = (float)$_POST['amount'];
+if (isset($_POST['username']) && isset($_POST['password'])) {
+    $username = $_POST['username'];
+    $password = $_POST['password'];
 
-    if ($amount >= 1000) {
-        $discount = $amount * 0.20;
-        $finalPrice = $amount - $discount;
-        echo "Purchase: $amount<br>";
-        echo "Discount: 20% ($discount)<br>";
-        echo "Final Price: $finalPrice";
-    } elseif ($amount >= 500) {
-        $discount = $amount * 0.10;
-        $finalPrice = $amount - $discount;
-        echo "Purchase: $amount<br>";
-        echo "Discount: 10% ($discount)<br>";
-        echo "Final Price: $finalPrice";
+    if ($username === "admin" && $password === "1234") {
+        echo "Access Granted";
     } else {
-        echo "Purchase: $amount<br>";
-        echo "No discount applied.<br>";
-        echo "Final Price: $amount";
+        echo "Access Denied";
     }
 }
 ?>
