@@ -5,13 +5,20 @@
 </head>
 <body>
 
+<form method="get" class="box1">
+ Enter a Number: <input type="text" name="number">
+ <input type="submit">
+</form>
+
 <?php
 
-$age = 18;
-if ($age >= 18) {
-    echo "Your Eligible to vote.";
-} else {
-    echo "You are a minor.";
+if (isset($_GET['number'])) {
+   $number = (int)$_GET['number'];
+     if ($number % 2 == 0) {
+        echo "$number is Even<br>";
+    } else {
+        echo "$number is Odd<br>";
+    }
 }
 
 ?>
