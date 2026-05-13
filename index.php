@@ -6,38 +6,32 @@
 <body>
 
 <form method="post">
- Enter a Number (1-7): <input type="text" name="day" value="<?php if(isset($_POST['day'])) echo htmlspecialchars($_POST['day']); ?>">
- <input type="submit" value="Check Day">
+ Enter Letter Grade (A-F): <input type="text" name="grade" value="<?php if(isset($_POST['grade'])) echo htmlspecialchars($_POST['grade']); ?>">
+ <input type="submit" value="Check Grade">
 </form>
 
 <?php
-if (isset($_POST['day'])) {
-    $day = (int)$_POST['day'];
+if (isset($_POST['grade'])) {
+    $grade = strtoupper($_POST['grade']);
 
-    switch ($day) {
-        case 1:
-            echo "Monday";
+    switch ($grade) {
+        case "A":
+            echo "Excellent";
             break;
-        case 2:
-            echo "Tuesday";
+        case "B":
+            echo "Good";
             break;
-        case 3:
-            echo "Wednesday";
+        case "C":
+            echo "Average";
             break;
-        case 4:
-            echo "Thursday";
+        case "D":
+            echo "Below Average";
             break;
-        case 5:
-            echo "Friday";
-            break;
-        case 6:
-            echo "Saturday";
-            break;
-        case 7:
-            echo "Sunday";
+        case "F":
+            echo "Fail";
             break;
         default:
-            echo "Invalid input. Please enter a number from 1 to 7.";
+            echo "Invalid input. Please enter A, B, C, D, or F.";
     }
 }
 ?>
