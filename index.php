@@ -5,26 +5,20 @@
 </head>
 <body>
 
-<form method="get">
- Enter First Number: <input type="text" name="num1" value="<?php if(isset($_GET['num1'])) echo htmlspecialchars($_GET['num1']); ?>"><br>
- Enter Second Number: <input type="text" name="num2" value="<?php if(isset($_GET['num2'])) echo htmlspecialchars($_GET['num2']); ?>"><br>
- Enter Third Number: <input type="text" name="num3" value="<?php if(isset($_GET['num3'])) echo htmlspecialchars($_GET['num3']); ?>"><br>
- <input type="submit" value="Check Largest">
+<form method="post">
+ Enter Password: <input type="password" name="password">
+ <input type="submit" value="Login">
 </form>
 
 <?php
-if (isset($_GET['num1']) && isset($_GET['num2']) && isset($_GET['num3'])) {
-    $num1 = (int)$_GET['num1'];
-    $num2 = (int)$_GET['num2'];
-    $num3 = (int)$_GET['num3'];
+if (isset($_POST['password'])) {
+    $fixedPassword = "introtoweb"; 
+    $userInput = $_POST['password'];
 
-    // Compare the three numbers
-    if ($num1 >= $num2 && $num1 >= $num3) {
-        echo "The largest number is: $num1";
-    } elseif ($num2 >= $num1 && $num2 >= $num3) {
-        echo "The largest number is: $num2";
+    if ($userInput === $fixedPassword) {
+        echo "Access Granted";
     } else {
-        echo "The largest number is: $num3";
+        echo "Access Denied";
     }
 }
 ?>
