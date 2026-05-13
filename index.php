@@ -6,32 +6,41 @@
 <body>
 
 <form method="post">
- Enter Letter Grade (A-F): <input type="text" name="grade" value="<?php if(isset($_POST['grade'])) echo htmlspecialchars($_POST['grade']); ?>">
- <input type="submit" value="Check Grade">
+ Enter First Number: <input type="text" name="num1" value="<?php if(isset($_POST['num1'])) echo htmlspecialchars($_POST['num1']); ?>"><br>
+ Enter Second Number: <input type="text" name="num2" value="<?php if(isset($_POST['num2'])) echo htmlspecialchars($_POST['num2']); ?>"><br>
+ Enter Operator (+, -, *, /): <input type="text" name="operator" value="<?php if(isset($_POST['operator'])) echo htmlspecialchars($_POST['operator']); ?>"><br>
+ <input type="submit" value="Calculate">
 </form>
 
 <?php
-if (isset($_POST['grade'])) {
-    $grade = strtoupper($_POST['grade']);
+if (isset($_POST['num1']) && isset($_POST['num2']) && isset($_POST['operator'])) {
+    $num1 = (float)$_POST['num1'];
+    $num2 = (float)$_POST['num2'];
+    $operator = $_POST['operator'];
 
-    switch ($grade) {
-        case "A":
-            echo "Excellent";
+    switch ($operator) {
+        case "+":
+            $result = $num1 + $num2;
+            echo "Result: $num1 + $num2 = $result";
             break;
-        case "B":
-            echo "Good";
+        case "-":
+            $result = $num1 - $num2;
+            echo "Result: $num1 - $num2 = $result";
             break;
-        case "C":
-            echo "Average";
+        case "*":
+            $result = $num1 * $num2;
+            echo "Result: $num1 * $num2 = $result";
             break;
-        case "D":
-            echo "Below Average";
-            break;
-        case "F":
-            echo "Fail";
+        case "/":
+            if ($num2 != 0) {
+                $result = $num1 / $num2;
+                echo "Result: $num1 / $num2 = $result";
+            } else {
+                echo "Error: Division by zero is not allowed.";
+            }
             break;
         default:
-            echo "Invalid input. Please enter A, B, C, D, or F.";
+            echo "Invalid operator. Please use +, -, *, or /.";
     }
 }
 ?>
