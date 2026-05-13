@@ -6,20 +6,38 @@
 <body>
 
 <form method="post">
- Username: <input type="text" name="username" value="<?php if(isset($_POST['username'])) echo htmlspecialchars($_POST['username']); ?>"><br>
- Password: <input type="password" name="password" value="<?php if(isset($_POST['password'])) echo htmlspecialchars($_POST['password']); ?>"><br>
- <input type="submit" value="Login">
+ Enter a Number (1-7): <input type="text" name="day" value="<?php if(isset($_POST['day'])) echo htmlspecialchars($_POST['day']); ?>">
+ <input type="submit" value="Check Day">
 </form>
 
 <?php
-if (isset($_POST['username']) && isset($_POST['password'])) {
-    $username = $_POST['username'];
-    $password = $_POST['password'];
+if (isset($_POST['day'])) {
+    $day = (int)$_POST['day'];
 
-    if ($username === "admin" && $password === "1234") {
-        echo "Access Granted";
-    } else {
-        echo "Access Denied";
+    switch ($day) {
+        case 1:
+            echo "Monday";
+            break;
+        case 2:
+            echo "Tuesday";
+            break;
+        case 3:
+            echo "Wednesday";
+            break;
+        case 4:
+            echo "Thursday";
+            break;
+        case 5:
+            echo "Friday";
+            break;
+        case 6:
+            echo "Saturday";
+            break;
+        case 7:
+            echo "Sunday";
+            break;
+        default:
+            echo "Invalid input. Please enter a number from 1 to 7.";
     }
 }
 ?>
