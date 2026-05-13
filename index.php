@@ -6,53 +6,27 @@
 <body>
 
 <form method="post">
- Enter a Number (1-12): <input type="text" name="month" value="<?php if(isset($_POST['month'])) echo htmlspecialchars($_POST['month']); ?>">
- <input type="submit" value="Show Month">
+ Enter Color (red, yellow, green): 
+ <input type="text" name="color" value="<?php if(isset($_POST['color'])) echo htmlspecialchars($_POST['color']); ?>">
+ <input type="submit" value="Check Action">
 </form>
 
 <?php
-if (isset($_POST['month'])) {
-    $month = (int)$_POST['month'];
+if (isset($_POST['color'])) {
+    $color = strtolower($_POST['color']);
 
-    switch ($month) {
-        case 1:
-            echo "January";
+    switch ($color) {
+        case "red":
+            echo "Stop";
             break;
-        case 2:
-            echo "February";
+        case "yellow":
+            echo "Ready";
             break;
-        case 3:
-            echo "March";
-            break;
-        case 4:
-            echo "April";
-            break;
-        case 5:
-            echo "May";
-            break;
-        case 6:
-            echo "June";
-            break;
-        case 7:
-            echo "July";
-            break;
-        case 8:
-            echo "August";
-            break;
-        case 9:
-            echo "September";
-            break;
-        case 10:
-            echo "October";
-            break;
-        case 11:
-            echo "November";
-            break;
-        case 12:
-            echo "December";
+        case "green":
+            echo "Go";
             break;
         default:
-            echo "Invalid input. Please enter a number from 1 to 12.";
+            echo "Invalid input. Please enter red, yellow, or green.";
     }
 }
 ?>
