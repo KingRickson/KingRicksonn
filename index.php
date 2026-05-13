@@ -6,30 +6,53 @@
 <body>
 
 <form method="post">
- Select an Option:<br>
- 1 = Add<br>
- 2 = Edit<br>
- 3 = Delete<br><br>
- Enter Choice: <input type="text" name="choice" value="<?php if(isset($_POST['choice'])) echo htmlspecialchars($_POST['choice']); ?>">
- <input type="submit" value="Submit">
+ Enter a Number (1-12): <input type="text" name="month" value="<?php if(isset($_POST['month'])) echo htmlspecialchars($_POST['month']); ?>">
+ <input type="submit" value="Show Month">
 </form>
 
 <?php
-if (isset($_POST['choice'])) {
-    $choice = (int)$_POST['choice'];
+if (isset($_POST['month'])) {
+    $month = (int)$_POST['month'];
 
-    switch ($choice) {
+    switch ($month) {
         case 1:
-            echo "You selected: Add";
+            echo "January";
             break;
         case 2:
-            echo "You selected: Edit";
+            echo "February";
             break;
         case 3:
-            echo "You selected: Delete";
+            echo "March";
+            break;
+        case 4:
+            echo "April";
+            break;
+        case 5:
+            echo "May";
+            break;
+        case 6:
+            echo "June";
+            break;
+        case 7:
+            echo "July";
+            break;
+        case 8:
+            echo "August";
+            break;
+        case 9:
+            echo "September";
+            break;
+        case 10:
+            echo "October";
+            break;
+        case 11:
+            echo "November";
+            break;
+        case 12:
+            echo "December";
             break;
         default:
-            echo "Invalid choice. Please enter 1, 2, or 3.";
+            echo "Invalid input. Please enter a number from 1 to 12.";
     }
 }
 ?>
