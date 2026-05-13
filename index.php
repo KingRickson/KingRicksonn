@@ -5,20 +5,18 @@
 </head>
 <body>
 
-<form method="post">
- Enter Password: <input type="password" name="password">
- <input type="submit" value="Login">
+<form method="get">
+ Enter a Year: <input type="text" name="year" value="<?php if(isset($_GET['year'])) echo htmlspecialchars($_GET['year']); ?>">
+ <input type="submit" value="Check">
 </form>
 
 <?php
-if (isset($_POST['password'])) {
-    $fixedPassword = "introtoweb"; 
-    $userInput = $_POST['password'];
-
-    if ($userInput === $fixedPassword) {
-        echo "Access Granted";
+if (isset($_GET['year'])) {
+    $year = (int)$_GET['year'];
+    if (($year % 4 == 0 && $year % 100 != 0) || ($year % 400 == 0)) {
+        echo "$year is a Leap Year";
     } else {
-        echo "Access Denied";
+        echo "$year is NOT a Leap Year";
     }
 }
 ?>
