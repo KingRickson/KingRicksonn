@@ -6,41 +6,30 @@
 <body>
 
 <form method="post">
- Enter First Number: <input type="text" name="num1" value="<?php if(isset($_POST['num1'])) echo htmlspecialchars($_POST['num1']); ?>"><br>
- Enter Second Number: <input type="text" name="num2" value="<?php if(isset($_POST['num2'])) echo htmlspecialchars($_POST['num2']); ?>"><br>
- Enter Operator (+, -, *, /): <input type="text" name="operator" value="<?php if(isset($_POST['operator'])) echo htmlspecialchars($_POST['operator']); ?>"><br>
- <input type="submit" value="Calculate">
+ Select an Option:<br>
+ 1 = Add<br>
+ 2 = Edit<br>
+ 3 = Delete<br><br>
+ Enter Choice: <input type="text" name="choice" value="<?php if(isset($_POST['choice'])) echo htmlspecialchars($_POST['choice']); ?>">
+ <input type="submit" value="Submit">
 </form>
 
 <?php
-if (isset($_POST['num1']) && isset($_POST['num2']) && isset($_POST['operator'])) {
-    $num1 = (float)$_POST['num1'];
-    $num2 = (float)$_POST['num2'];
-    $operator = $_POST['operator'];
+if (isset($_POST['choice'])) {
+    $choice = (int)$_POST['choice'];
 
-    switch ($operator) {
-        case "+":
-            $result = $num1 + $num2;
-            echo "Result: $num1 + $num2 = $result";
+    switch ($choice) {
+        case 1:
+            echo "You selected: Add";
             break;
-        case "-":
-            $result = $num1 - $num2;
-            echo "Result: $num1 - $num2 = $result";
+        case 2:
+            echo "You selected: Edit";
             break;
-        case "*":
-            $result = $num1 * $num2;
-            echo "Result: $num1 * $num2 = $result";
-            break;
-        case "/":
-            if ($num2 != 0) {
-                $result = $num1 / $num2;
-                echo "Result: $num1 / $num2 = $result";
-            } else {
-                echo "Error: Division by zero is not allowed.";
-            }
+        case 3:
+            echo "You selected: Delete";
             break;
         default:
-            echo "Invalid operator. Please use +, -, *, or /.";
+            echo "Invalid choice. Please enter 1, 2, or 3.";
     }
 }
 ?>
